@@ -1,0 +1,13 @@
+// top-level JBrowse configuration file.  Treated the same as
+// jbrowse.conf, but this one is in JSON format.
+//
+// Unless generating configuration from scripts, most users will
+// prefer to add variables to jbrowse.conf instead of this file, since
+// jbrowse.conf is much easier to hand-edit.
+{
+
+defaultLocation: "chrI:178500..215500",
+defaultTracks: "DNA,All Annotated Sequence Features,Doube_strand_break_hotspots,Xrn1-sensitive_unstable transcripts_XUTs,ScGlycerolMedia,3'UTRs,PolII_occupancy_WT"
+
+
+}
