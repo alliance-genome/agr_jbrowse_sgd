@@ -27,6 +27,8 @@ RUN git clone --single-branch --branch dev https://github.com/GMOD/jbrowse.git
 #RUN git clone --single-branch --branch release-3.1.1 https://github.com/alliance-genome/agr_jbrowse_config.git
 RUN git clone --single-branch --branch main https://github.com/alliance-genome/agr_jbrowse_sgd.git
 
+RUN git clone https://github.com/elsiklab/multibigwig.git
+
 #agr_jbrowse_plugin contains a simple plugin that puts the AGR logo in the upper left corner of the page
 #RUN git clone --single-branch --branch release-3.2.0 https://github.com/alliance-genome/agr_jbrowse_plugin.git
 
@@ -41,6 +43,7 @@ RUN mkdir /usr/share/nginx/html/jbrowse
 
 RUN rm /usr/share/nginx/html/index.html && rm /usr/share/nginx/html/50x.html && cp -r /jbrowse/* /usr/share/nginx/html/jbrowse && \
     cp /jbrowse/.htaccess /usr/share/nginx/html/jbrowse/.htaccess && \
+    cp -r multibigwig /usr/share/nginx/html/jbrowse/plugins && \
     cp -r /agr_jbrowse_sgd/jbrowse/data /usr/share/nginx/html/jbrowse
 
 #getting the cached Alliance favicons to overwrite the J provide by JBrowse
