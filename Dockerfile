@@ -44,7 +44,9 @@ RUN mkdir /usr/share/nginx/html/jbrowse
 RUN rm /usr/share/nginx/html/index.html && rm /usr/share/nginx/html/50x.html && cp -r /jbrowse/* /usr/share/nginx/html/jbrowse && \
     cp /jbrowse/.htaccess /usr/share/nginx/html/jbrowse/.htaccess && \
     cp -r multibigwig/ /usr/share/nginx/html/jbrowse/plugins/MultiBigWig/ && \
-    cp -r /agr_jbrowse_sgd/jbrowse/data /usr/share/nginx/html/jbrowse
+    cp -r /agr_jbrowse_sgd/jbrowse/data /usr/share/nginx/html/jbrowse && \
+    cp /agr_jbrowse_sgd/jbrowse/jbrowse.conf /usr/share/nginx/html/jbrowse && \
+    cp /agr_jbrowse_sgd/jbrowse/jbrowse_conf.json /usr/share/nginx/html/jbrowse
 
 #getting the cached Alliance favicons to overwrite the J provide by JBrowse
 #RUN cp /agr_jbrowse_config/jbrowse/agr_favicons/* /usr/share/nginx/html/jbrowse/img/favicons/
