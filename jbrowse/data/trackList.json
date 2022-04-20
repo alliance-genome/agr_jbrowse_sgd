@@ -23,7 +23,7 @@
       "sources" : [
          {
             "type" : "csv",
-            "url" : "https://s3.amazonaws.com/agrjbrowse/MOD-jbrowses/SGD/jbrowse/data/yeastMetaData.csv"
+            "url" : "https://s3.amazonaws.com/agrjbrowse/MOD-jbrowses/SGD/jbrowse/data/json/yeast/yeastMetaData.csv"
          }
       ]
    },
