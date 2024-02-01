@@ -5703,6 +5703,78 @@
          "trackType" : "CanvasFeatures",
          "type" : "CanvasFeatures",
          "urlTemplate" : "https://s3.amazonaws.com/agrjbrowse/MOD-jbrowses/SGD/jbrowse/data/tracks/Subfeatures/{refseq}/trackData.json"
+      },
+      {
+         "compress" : 0,
+         "key" : "Wacholder_2023_translated_orfs",
+         "label" : "Wacholder_2023_translated_orfs",
+         "storeClass" : "JBrowse/Store/SeqFeature/NCList",
+         "style" : {
+            "className" : "feature"
+         },
+         "trackType" : "CanvasFeatures",
+         "type" : "CanvasFeatures",
+         "urlTemplate" : "https://s3.amazonaws.com/agrjbrowse/MOD-jbrowses/SGD/jbrowse/data/tracks/Wacholder_2023_translated_orfs/{refseq}/trackData.json"
+      },
+      {
+         "compress" : 0,
+         "key" : "Wacholder_2023_translated_orfs_chx",
+         "label" : "Wacholder_2023_translated_orfs_chx",
+         "storeClass" : "JBrowse/Store/SeqFeature/NCList",
+         "style" : {
+            "className" : "feature"
+         },
+         "trackType" : null,
+         "type" : "FeatureTrack",
+         "urlTemplate" : "https://s3.amazonaws.com/agrjbrowse/MOD-jbrowses/SGD/jbrowse/data/tracks/Wacholder_2023_translated_orfs_chx/{refseq}/trackData.json"
+      },
+      {
+         "compress" : 0,
+         "key" : "Wacholder_2023_translated_orfs_nochx",
+         "label" : "Wacholder_2023_translated_orfs_nochx",
+         "storeClass" : "JBrowse/Store/SeqFeature/NCList",
+         "style" : {
+            "className" : "feature"
+         },
+         "trackType" : null,
+         "type" : "FeatureTrack",
+         "urlTemplate" : "https://s3.amazonaws.com/agrjbrowse/MOD-jbrowses/SGD/jbrowse/data/tracks/Wacholder_2023_translated_orfs_nochx/{refseq}/trackData.json"
+      },
+      {
+         "compress" : 0,
+         "key" : "Wacholder_2023_translated_orfs_sd_media",
+         "label" : "Wacholder_2023_translated_orfs_sd_media",
+         "storeClass" : "JBrowse/Store/SeqFeature/NCList",
+         "style" : {
+            "className" : "feature"
+         },
+         "trackType" : null,
+         "type" : "FeatureTrack",
+         "urlTemplate" : "https://s3.amazonaws.com/agrjbrowse/MOD-jbrowses/SGD/jbrowse/data/tracks/Wacholder_2023_translated_orfs_sd_media/{refseq}/trackData.json"
+      },
+      {
+         "compress" : 0,
+         "key" : "Wacholder_2023_translated_orfs_ypd_media",
+         "label" : "Wacholder_2023_translated_orfs_ypd_media",
+         "storeClass" : "JBrowse/Store/SeqFeature/NCList",
+         "style" : {
+            "className" : "feature"
+         },
+         "trackType" : null,
+         "type" : "FeatureTrack",
+         "urlTemplate" : "https://s3.amazonaws.com/agrjbrowse/MOD-jbrowses/SGD/jbrowse/data/tracks/Wacholder_2023_translated_orfs_ypd_media/{refseq}/trackData.json"
+      },
+      {
+         "compress" : 0,
+         "key" : "Wacholder_2023_translated_orfs_ypd_nochx",
+         "label" : "Wacholder_2023_translated_orfs_ypd_nochx",
+         "storeClass" : "JBrowse/Store/SeqFeature/NCList",
+         "style" : {
+            "className" : "feature"
+         },
+         "trackType" : null,
+         "type" : "FeatureTrack",
+         "urlTemplate" : "https://s3.amazonaws.com/agrjbrowse/MOD-jbrowses/SGD/jbrowse/data/tracks/Wacholder_2023_translated_orfs_ypd_nochx/{refseq}/trackData.json"
       }
    ]
 }
