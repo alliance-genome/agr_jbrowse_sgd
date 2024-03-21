@@ -20,7 +20,7 @@ FROM gmod/jbrowse-buildenv:latest as build
 LABEL maintainer="scott@scottcain.net"
 
 # Actual JBrowse code; can bump the release tag and rebuild to get new versions
-RUN git clone --single-branch --branch dev https://github.com/GMOD/jbrowse.git
+RUN git clone --single-branch --branch support_old_sgd https://github.com/GMOD/jbrowse.git
 
 #agr_jbrowse_config contains the configuration files for the various species; they are
 #moved into the right place in the long RUN command below
