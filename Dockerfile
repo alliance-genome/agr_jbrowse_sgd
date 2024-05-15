@@ -77,6 +77,8 @@ COPY --from=build /usr/share/nginx/html/jbrowse/plugins /usr/share/nginx/html/jb
 COPY --from=build /usr/share/nginx/html/jbrowse/site.webmanifest /usr/share/nginx/html/jbrowse/site.webmanifest
 COPY --from=build /usr/share/nginx/html/jbrowse/.htaccess /usr/share/nginx/html/jbrowse/.htaccess
 
+WORKDIR /usr/share/nginx/html
+RUN tar zcvf sgd_jbrowse.tar.gz jbrowse
 
 VOLUME /data
 COPY docker-entrypoint.sh /
