@@ -20,12 +20,12 @@ FROM gmod/jbrowse-buildenv:latest as build
 LABEL maintainer="scott@scottcain.net"
 
 # Actual JBrowse code; can bump the release tag and rebuild to get new versions
-RUN git clone --single-branch --branch dev https://github.com/GMOD/jbrowse.git
+RUN git clone --single-branch --branch support_old_sgd https://github.com/GMOD/jbrowse.git
 
 #agr_jbrowse_config contains the configuration files for the various species; they are
 #moved into the right place in the long RUN command below
 #RUN git clone --single-branch --branch release-3.1.1 https://github.com/alliance-genome/agr_jbrowse_config.git
-RUN git clone --single-branch --branch main https://github.com/alliance-genome/agr_jbrowse_sgd.git
+RUN git clone --single-branch --branch server-dev https://github.com/alliance-genome/agr_jbrowse_sgd.git
 
 RUN git clone https://github.com/elsiklab/multibigwig.git
 
@@ -77,6 +77,8 @@ COPY --from=build /usr/share/nginx/html/jbrowse/plugins /usr/share/nginx/html/jb
 COPY --from=build /usr/share/nginx/html/jbrowse/site.webmanifest /usr/share/nginx/html/jbrowse/site.webmanifest
 COPY --from=build /usr/share/nginx/html/jbrowse/.htaccess /usr/share/nginx/html/jbrowse/.htaccess
 
+WORKDIR /usr/share/nginx/html
+RUN tar zcvf sgd_jbrowse.tar.gz jbrowse
 
 VOLUME /data
 COPY docker-entrypoint.sh /
