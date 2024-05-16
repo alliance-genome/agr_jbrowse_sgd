@@ -5,7 +5,18 @@ set -e
 AWSACCESS=${AWS_ACCESS_KEY}
 AWSSECRET=${AWS_SECRET_KEY}
 
-cd /usr/share/nginx/html/jbrowse
+cd /usr/share/nginx/html/jbrowse/data
+
+AWS_ACCESS_KEY_ID=$AWSACCESS AWS_SECRET_ACCESS_KEY=$AWSSECRET aws s3 cp --recursive s3://agrjbrowse/MOD-jbrowses/SGD/jbrowse/data/seq seq/
+curl -O https://stage.dh18454tea1gu.amplifyapp.com/data/trackList.json
+curl -O https://stage.dh18454tea1gu.amplifyapp.com/data/tracks.conf
+AWS_ACCESS_KEY_ID=$AWSACCESS AWS_SECRET_ACCESS_KEY=$AWSSECRET aws s3 cp --recursive s3://agrjbrowse/MOD-jbrowses/SGD/jbrowse/data/tracks tracks/
+
+# convert absolut templateUrls to relataive
+RUN sed -i 's/https:.*SGD\/jbrowse\///g' trackList.json
+RUN sed -i 's/https:.*SGD\/jbrowse\/data\///g' tracks.conf
+
+cd ..
 
 bin/generate-names.pl 
 
