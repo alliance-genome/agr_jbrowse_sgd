@@ -1,0 +1,39 @@
+# JBrowse
+
+FROM gmod/jbrowse-buildenv:latest as build
+LABEL maintainer="scott@scottcain.net"
+
+# Actual JBrowse code; can bump the release tag and rebuild to get new versions
+RUN git clone --single-branch --branch support_old_sgd https://github.com/GMOD/jbrowse.git
+
+#agr_jbrowse_config contains the configuration files for the various species; they are
+#moved into the right place in the long RUN command below
+#RUN git clone --single-branch --branch release-3.1.1 https://github.com/alliance-genome/agr_jbrowse_config.git
+RUN git clone --single-branch --branch generate_names_docker https://github.com/alliance-genome/agr_jbrowse_sgd.git
+
+RUN mkdir /usr/share/nginx/html/jbrowse
+
+RUN rm /usr/share/nginx/html/index.html && rm /usr/share/nginx/html/50x.html && cp -r /jbrowse/* /usr/share/nginx/html/jbrowse && \
+    cp /jbrowse/.htaccess /usr/share/nginx/html/jbrowse/.htaccess && \
+    cp -r /agr_jbrowse_sgd/jbrowse/data /usr/share/nginx/html/jbrowse && \
+    cp /agr_jbrowse_sgd/jbrowse/jbrowse.conf /usr/share/nginx/html/jbrowse && \
+    cp /agr_jbrowse_sgd/gen_names.sh / && \
+    cp /agr_jbrowse_sgd/jbrowse/jbrowse_conf.json /usr/share/nginx/html/jbrowse
+
+WORKDIR  /usr/share/nginx/html/jbrowse
+RUN ./setup.sh
+
+WORKDIR /usr/share/nginx/html/jbrowse/data
+
+RUN aws s3 cp --recursive s3://agrjbrowse/MOD-jbrowses/SGD/jbrowse/data/seq seq/ 
+RUN curl -O https://stage.dh18454tea1gu.amplifyapp.com/data/trackList.json
+RUN curl -O https://stage.dh18454tea1gu.amplifyapp.com/data/tracks.conf
+RUN aws s3 cp --recursive s3://agrjbrowse/MOD-jbrowses/SGD/jbrowse/data/tracks tracks/
+
+# convert absolut templateUrls to relataive
+RUN sed -i 's/https:.*SGD\/jbrowse\///g' trackList.json
+RUN sed -i 's/https:.*SGD\/jbrowse\/data\///g' tracks.conf
+
+WORKDIR /usr/share/nginx/html/jbrowse
+
+CMD ["/gen_names.sh"]
