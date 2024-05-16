@@ -1,5 +1,15 @@
 # JBrowse
 
+# much of this could be moved to a new base image (ie,
+# build jbrowse in the base container then in this
+# container just bring in the gen names script and execute
+#
+# Usage:
+#  docker build -f Dockerfile.genNames -t sgd_gennames --no-cache .  
+#      #note that the no-cache will probably be needed since changes will probably
+#      #happen in the gen-names.sh script
+#  docker run -e "AWS_ACCESS_KEY=<access>" -e "AWS_SECRET_KEY=<secret>" --rm sgd_gennames
+
 FROM gmod/jbrowse-buildenv:latest as build
 LABEL maintainer="scott@scottcain.net"
 
@@ -23,6 +33,7 @@ RUN rm /usr/share/nginx/html/index.html && rm /usr/share/nginx/html/50x.html && 
 WORKDIR  /usr/share/nginx/html/jbrowse
 RUN ./setup.sh
 
+#All of this was moved to the CMD script
 #WORKDIR /usr/share/nginx/html/jbrowse/data
 
 #RUN aws s3 cp --recursive s3://agrjbrowse/MOD-jbrowses/SGD/jbrowse/data/seq seq/ 
