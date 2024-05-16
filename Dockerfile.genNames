@@ -23,17 +23,17 @@ RUN rm /usr/share/nginx/html/index.html && rm /usr/share/nginx/html/50x.html && 
 WORKDIR  /usr/share/nginx/html/jbrowse
 RUN ./setup.sh
 
-WORKDIR /usr/share/nginx/html/jbrowse/data
+#WORKDIR /usr/share/nginx/html/jbrowse/data
 
-RUN aws s3 cp --recursive s3://agrjbrowse/MOD-jbrowses/SGD/jbrowse/data/seq seq/ 
-RUN curl -O https://stage.dh18454tea1gu.amplifyapp.com/data/trackList.json
-RUN curl -O https://stage.dh18454tea1gu.amplifyapp.com/data/tracks.conf
-RUN aws s3 cp --recursive s3://agrjbrowse/MOD-jbrowses/SGD/jbrowse/data/tracks tracks/
+#RUN aws s3 cp --recursive s3://agrjbrowse/MOD-jbrowses/SGD/jbrowse/data/seq seq/ 
+#RUN curl -O https://stage.dh18454tea1gu.amplifyapp.com/data/trackList.json
+#RUN curl -O https://stage.dh18454tea1gu.amplifyapp.com/data/tracks.conf
+#RUN aws s3 cp --recursive s3://agrjbrowse/MOD-jbrowses/SGD/jbrowse/data/tracks tracks/
 
 # convert absolut templateUrls to relataive
-RUN sed -i 's/https:.*SGD\/jbrowse\///g' trackList.json
-RUN sed -i 's/https:.*SGD\/jbrowse\/data\///g' tracks.conf
+#RUN sed -i 's/https:.*SGD\/jbrowse\///g' trackList.json
+#RUN sed -i 's/https:.*SGD\/jbrowse\/data\///g' tracks.conf
 
-WORKDIR /usr/share/nginx/html/jbrowse
+#WORKDIR /usr/share/nginx/html/jbrowse
 
-CMD ["/gen_names.sh"]
+CMD ["/bin/bash", "/gen_names.sh"]
