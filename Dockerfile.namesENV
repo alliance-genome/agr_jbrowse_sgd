@@ -1,0 +1,17 @@
+# JBrowse
+
+# Simple extention of jbrowse-buildenv to compile JBrowse so that
+# the perl scripts in bin/ are available
+#
+# Primary use case: to make it easy to update a name index for
+# a site where the data are stored in AWS S3
+FROM gmod/jbrowse-buildenv:latest as build
+LABEL maintainer="scott@scottcain.net"
+
+# Actual JBrowse code; can bump the release tag and rebuild to get new versions
+RUN git clone --single-branch --branch support_old_sgd https://github.com/GMOD/jbrowse.git
+
+WORKDIR  /jbrowse
+RUN ./setup.sh
+
+WORKDIR /
