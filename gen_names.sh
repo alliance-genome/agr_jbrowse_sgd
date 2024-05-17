@@ -36,5 +36,8 @@ bin/generate-names.pl -v --tracks \
 "other_transcripts",\
 "stable_unannotated_transcripts"
 
-AWS_ACCESS_KEY_ID=$AWSACCESS AWS_SECRET_ACCESS_KEY=$AWSSECRET aws s3 cp --recursive --acl public-read data/names s3://agrjbrowse/test/sgd-names/
+
+echo "uploading to s3"
+
+AWS_ACCESS_KEY_ID=$AWSACCESS AWS_SECRET_ACCESS_KEY=$AWSSECRET aws s3 cp --quiet --recursive --acl public-read data/names s3://agrjbrowse/test/sgd-names/
 
