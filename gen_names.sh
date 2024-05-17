@@ -22,9 +22,10 @@ cd ..
 #bin/generate-names.pl 
 
 #specifying what tracks to index
-bin/generate-names.pl -v --tracks "3\'UTRs",\
-"5\'UTRs",\ 
-"5\'and3\'UTRs",\
+bin/generate-names.pl -v --tracks \
+#"3\'UTRs",\
+#"5\'UTRs",\ 
+#"5\'and3\'UTRs",\
 "TransposonsLTR",\
 "Adr1_and_Cat8_binding_regions",\
 "All Annotated Sequence Features",\
