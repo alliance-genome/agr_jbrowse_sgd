@@ -20,11 +20,14 @@ sed -i 's/https:.*SGD\/jbrowse\/data\///g' tracks.conf
 
 cd ..
 
-bin/flatfile-to-json.pl --gff /saccharomyces_cerevisiae.gff --trackLabel S288C --trackType CanvasFeatures
-bin/flatfile-to-json.pl --gff /saccharomyces_cerevisiae.gff --trackLabel "All Annotated Sequence Features" --trackType CanvasFeatures --type ARS,non_transcribed_region,blocked_reading_frame,centromere,chromosome,gene,long_terminal_repeat,LTR_retrotransposon,mating_type_region,ncRNA_gene,origin_of_replication,pseudogene,rRNA_gene,silent_mating_type_cassette_array,snoRNA_gene,snRNA_gene,telomerase_RNA_gene,telomere,transposable_element_gene,tRNA_gene
-bin/flatfile-to-json.pl --gff /saccharomyces_cerevisiae.gff --trackLabel Protein-Coding-Genes --trackType CanvasFeatures --type CDS,five_prime_UTR_intron,gene,intein_encoding_region,mRNA,plus_1_translational_frameshift,transposable_element_gene
-bin/flatfile-to-json.pl --gff /saccharomyces_cerevisiae.gff --trackLabel Non-Coding-RNA-Genes --trackType CanvasFeatures --type ncRNA_gene,rRNA_gene,snoRNA_gene,snRNA_gene,tRNA_gene
-bin/flatfile-to-json.pl --gff /saccharomyces_cerevisiae.gff --trackLabel Subfeatures --trackType CanvasFeatures --type ARS_consensus_sequence,CDS,centromere_DNA_Element_I,centromere_DNA_Element_II,centromere_DNA_Element_III,external_transcribed_spacer_region,five_prime_UTR_intron,intein_encoding_region,internal_transcribed_spacer_region,intron,noncoding_exon,non_transcribed_region,plus_1_translational_frameshift,telomeric_repeat,W_region,X_element,X_element_combinatorial_repeat,X_region,Y_prime_element,Y_region,Z1_region,Z2_region
+curl -O https://sgd-prod-upload.s3.amazonaws.com/latest/saccharomyces_cerevisiae.gff.gz
+gzip -d saccharomyces_cerevisiae.gff.gz
+
+bin/flatfile-to-json.pl --gff saccharomyces_cerevisiae.gff --trackLabel S288C --trackType CanvasFeatures
+bin/flatfile-to-json.pl --gff saccharomyces_cerevisiae.gff --trackLabel "All Annotated Sequence Features" --trackType CanvasFeatures --type ARS,non_transcribed_region,blocked_reading_frame,centromere,chromosome,gene,long_terminal_repeat,LTR_retrotransposon,mating_type_region,ncRNA_gene,origin_of_replication,pseudogene,rRNA_gene,silent_mating_type_cassette_array,snoRNA_gene,snRNA_gene,telomerase_RNA_gene,telomere,transposable_element_gene,tRNA_gene
+bin/flatfile-to-json.pl --gff saccharomyces_cerevisiae.gff --trackLabel Protein-Coding-Genes --trackType CanvasFeatures --type CDS,five_prime_UTR_intron,gene,intein_encoding_region,mRNA,plus_1_translational_frameshift,transposable_element_gene
+bin/flatfile-to-json.pl --gff saccharomyces_cerevisiae.gff --trackLabel Non-Coding-RNA-Genes --trackType CanvasFeatures --type ncRNA_gene,rRNA_gene,snoRNA_gene,snRNA_gene,tRNA_gene
+bin/flatfile-to-json.pl --gff saccharomyces_cerevisiae.gff --trackLabel Subfeatures --trackType CanvasFeatures --type ARS_consensus_sequence,CDS,centromere_DNA_Element_I,centromere_DNA_Element_II,centromere_DNA_Element_III,external_transcribed_spacer_region,five_prime_UTR_intron,intein_encoding_region,internal_transcribed_spacer_region,intron,noncoding_exon,non_transcribed_region,plus_1_translational_frameshift,telomeric_repeat,W_region,X_element,X_element_combinatorial_repeat,X_region,Y_prime_element,Y_region,Z1_region,Z2_region
 
 
 
