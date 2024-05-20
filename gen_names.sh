@@ -49,6 +49,9 @@ bin/generate-names.pl --tracks \
 
 echo "uploading to s3"
 
-AWS_ACCESS_KEY_ID=$AWSACCESS AWS_SECRET_ACCESS_KEY=$AWSSECRET aws s3 cp --quiet --recursive --acl public-read data/tracks s3://agrjbrowse/test/sgd_tracks/
+AWS_ACCESS_KEY_ID=$AWSACCESS AWS_SECRET_ACCESS_KEY=$AWSSECRET aws s3 cp --quiet --recursive --acl public-read "data/tracks/All Annotated Sequence Features" "s3://agrjbrowse/test/sgd_tracks/All Annotated Sequence Features"
+AWS_ACCESS_KEY_ID=$AWSACCESS AWS_SECRET_ACCESS_KEY=$AWSSECRET aws s3 cp --quiet --recursive --acl public-read data/tracks/Protein-Coding-Genes s3://agrjbrowse/test/sgd_tracks/Protein-Coding-Genes
+AWS_ACCESS_KEY_ID=$AWSACCESS AWS_SECRET_ACCESS_KEY=$AWSSECRET aws s3 cp --quiet --recursive --acl public-read data/tracks/Non-Coding-RNA-Genes s3://agrjbrowse/test/sgd_tracks/Non-Coding-RNA-Genes
+AWS_ACCESS_KEY_ID=$AWSACCESS AWS_SECRET_ACCESS_KEY=$AWSSECRET aws s3 cp --quiet --recursive --acl public-read data/tracks/Subfeatures s3://agrjbrowse/test/sgd_tracks/Subfeatures
 AWS_ACCESS_KEY_ID=$AWSACCESS AWS_SECRET_ACCESS_KEY=$AWSSECRET aws s3 cp --quiet --recursive --acl public-read data/names s3://agrjbrowse/test/sgd-names/
 

@@ -46,8 +46,8 @@ RUN cp -r /agr_jbrowse_sgd/jbrowse/data /jbrowse && \
     cp /agr_jbrowse_sgd/gen_names.sh / && \
     cp /agr_jbrowse_sgd/jbrowse/jbrowse_conf.json /jbrowse
 
-RUN curl -O https://downloads.yeastgenome.org/latest/saccharomyces_cerevisiae.gff.gz
-RUN gzip -d https://downloads.yeastgenome.org/latest/saccharomyces_cerevisiae.gff.gz
+RUN curl -O https://sgd-prod-upload.s3.amazonaws.com/latest/saccharomyces_cerevisiae.gff.gz
+RUN gzip -d saccharomyces_cerevisiae.gff.gz
 
 WORKDIR  /jbrowse
 
