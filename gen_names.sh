@@ -58,3 +58,9 @@ AWS_ACCESS_KEY_ID=$AWSACCESS AWS_SECRET_ACCESS_KEY=$AWSSECRET aws s3 cp --quiet 
 AWS_ACCESS_KEY_ID=$AWSACCESS AWS_SECRET_ACCESS_KEY=$AWSSECRET aws s3 cp --quiet --recursive --acl public-read data/tracks/Subfeatures s3://agrjbrowse/MOD-jbrowses/SGD/jbrowse/data/tracks/Subfeatures
 AWS_ACCESS_KEY_ID=$AWSACCESS AWS_SECRET_ACCESS_KEY=$AWSSECRET aws s3 cp --quiet --recursive --acl public-read data/names s3://agrjbrowse/MOD-jbrowses/SGD/jbrowse/data/names
 
+#AWS_ACCESS_KEY_ID=$AWSACCESS AWS_SECRET_ACCESS_KEY=$AWSSECRET aws s3 cp --quiet --recursive --acl public-read "data/tracks/All Annotated Sequence Features" "s3://agrjbrowse/test/SGD/tracks/All Annotated Sequence Features"
+#AWS_ACCESS_KEY_ID=$AWSACCESS AWS_SECRET_ACCESS_KEY=$AWSSECRET aws s3 cp --quiet --recursive --acl public-read data/tracks/Protein-Coding-Genes s3://agrjbrowse/test/SGD/tracks/Protein-Coding-Genes
+#AWS_ACCESS_KEY_ID=$AWSACCESS AWS_SECRET_ACCESS_KEY=$AWSSECRET aws s3 cp --quiet --recursive --acl public-read data/tracks/Non-Coding-RNA-Genes s3://agrjbrowse/test/SGD/tracks/Non-Coding-RNA-Genes
+#AWS_ACCESS_KEY_ID=$AWSACCESS AWS_SECRET_ACCESS_KEY=$AWSSECRET aws s3 cp --quiet --recursive --acl public-read data/tracks/Subfeatures s3://agrjbrowse/test/SGD/tracks/Subfeatures
+#AWS_ACCESS_KEY_ID=$AWSACCESS AWS_SECRET_ACCESS_KEY=$AWSSECRET aws s3 cp --quiet --recursive --acl public-read data/names s3://agrjbrowse/test/SGD/names
+
