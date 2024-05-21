@@ -4,7 +4,7 @@ JBrowse server container for SGD's JBrowse
 
 # Dockerfiles
 
-This repo houses three docker files:
+This repo houses two docker files:
 
 1. Dockerfile: this is the orginal JBrowse server docker file that has nginx
    and can be used to serve up SGD's JBrowse instance. It is no longer used in
@@ -15,12 +15,6 @@ This repo houses three docker files:
    JBrowse's name index, it now is designed to run periodically to get updated
    yeast GFF3, generate updated track data, update the name index and place
    new data in the AWS S3 bucket that drives the SGD JBrowse 1 instance.
-
-3. Dockerfile.namesENV: This is a docker base image that provides AWS command
-   line tools and an installed JBrowse 1 instance (so that JBrowse 1 command
-   line tools like flatfile-to-json and generate-names are available). This
-   image file is generic and could be moved to it's own repo. It will be
-   published on hub.docker.com.
 
 # Typical usage
 
