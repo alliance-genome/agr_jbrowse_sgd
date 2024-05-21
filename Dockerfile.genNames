@@ -1,18 +1,5 @@
 # JBrowse
 
-# much of this could be moved to a new base image (ie,
-# build jbrowse in the base container then in this
-# container just bring in the gen names script and execute
-#
-# "Preusage" note: if it's not available at Docker Hub and
-# also hasn't been built locally, before the stuff below
-# can be performed, the base image needs to be built:
-#
-#   docker build -f Dockerfile.namesENV -t gmod/jbrowse_gen_names .
-#
-# This command will take 10 or so minutes but only need to be
-# done once.
-#
 # Usage:
 #  docker build -f Dockerfile.genNames -t sgd_gennames --no-cache .  
 #      #note that the no-cache will probably be needed since changes will probably
@@ -26,10 +13,12 @@
 #       "stage" JBrowse site
 #  * runs sed commands on those config files to change urls to relative
 #       (that is, to point at the data we just got from S3)
+#  * fetches an updated yeast GFF3 file
+#  * runs flatfile-to-json to update 4 tracks
 #  * runs generate-names.pl with a list of tracks
-#  * uploads the new index to the S3 bucket
+#  * uploads the new tracks and name index to the S3 bucket
 #
-# On a reasonably spec'ed computer, the run command goes 15-30 minutes
+# On a reasonably spec'ed computer, the run command goes 12-15 minutes
 # depending on how many tracks are indexed
 
 
