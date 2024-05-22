@@ -1,0 +1,41 @@
+# JBrowse
+
+# Usage:
+#  docker build -f Dockerfile.genNames -t sgd_gennames --no-cache .  
+#      #note that the no-cache will probably be needed since changes will probably
+#      #happen in the gen-names.sh script
+#  docker run -e "AWS_ACCESS_KEY=<access>" -e "AWS_SECRET_KEY=<secret>" --rm sgd_gennames
+#
+# The when run, this container runs the "gen-names.sh" script
+# which does these things:
+#  * fetches seq and track directories from the agrjbrowse bucket
+#  * fetches the trackList.json and tracks.conf file from the
+#       "stage" JBrowse site
+#  * runs sed commands on those config files to change urls to relative
+#       (that is, to point at the data we just got from S3)
+#  * fetches an updated yeast GFF3 file
+#  * runs flatfile-to-json to update 4 tracks
+#  * runs generate-names.pl with a list of tracks
+#  * uploads the new tracks and name index to the S3 bucket
+#
+# On a reasonably spec'ed computer, the run command goes 12-15 minutes
+# depending on how many tracks are indexed
+
+
+#FROM gmod/jbrowse_gen_names:latest 
+FROM gmod/jbrowse-gff-base:latest
+LABEL maintainer="scott@scottcain.net"
+
+#agr_jbrowse_config contains the configuration files for the various species; they are
+#moved into the right place in the long RUN command below
+#RUN git clone --single-branch --branch release-3.1.1 https://github.com/alliance-genome/agr_jbrowse_config.git
+RUN git clone --single-branch --branch generate_names_docker https://github.com/alliance-genome/agr_jbrowse_sgd.git
+
+RUN cp -r /agr_jbrowse_sgd/jbrowse/data /jbrowse && \
+    cp /agr_jbrowse_sgd/jbrowse/jbrowse.conf /jbrowse && \
+    cp /agr_jbrowse_sgd/gen_names.sh / && \
+    cp /agr_jbrowse_sgd/jbrowse/jbrowse_conf.json /jbrowse
+
+WORKDIR  /jbrowse
+
+CMD ["/bin/bash", "/gen_names.sh"]
